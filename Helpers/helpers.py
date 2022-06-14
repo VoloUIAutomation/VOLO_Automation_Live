@@ -3,18 +3,7 @@ import string
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from Automation.lib.driver import get_driver
-from Automation.lib.test_logger import logger
-
-driver = get_driver()
-
-
-def go_to_page(url, new_window=False):
-    if new_window:
-        driver.execute_script(f"window.open('{url}');")
-    else:
-        driver.get(url)
-        driver.maximize_window()
+from test_logger import logger
 
 
 def find_and_click(loc, timeout=10):
@@ -25,6 +14,7 @@ def find_and_click(loc, timeout=10):
 def find_and_send_keys(loc, inp_text, timeout=10):
     elem = find(loc, timeout)
     elem.send_keys(inp_text)
+
 
 def select_1(loc, valu):
     select = Select(find(loc))
