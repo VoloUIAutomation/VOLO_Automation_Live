@@ -3,7 +3,7 @@ from Helpers import helpers
 from TestData import test_data
 
 myaccoutn_btn = (By.XPATH, "//span[@class='profile-name']//span[@class='greet-customer']")
-login_signup_btn = (By.XPATH, "//div[@class='header-top']//li[3]//a[1]")
+log_in_sign_up_but_loc = By.XPATH, '//a[contains(text(), "Login/Sign up")]'
 
 mail_fld = (By.ID, "dwfrm_login_username")
 password_fld = (By.ID, "dwfrm_login_password")
