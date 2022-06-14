@@ -1,0 +1,6 @@
+url = 'https://www.roots.com/us/en/homepage/'
+email = 'team3@yopmail.com'
+password = 'Test1234'
+message = 'It was very helpful. Test'
+order_ref = '123'
+success_msg = 'Your message has been successfully sent to our team.'
