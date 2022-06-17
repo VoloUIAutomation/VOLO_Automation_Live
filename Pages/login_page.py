@@ -1,18 +1,15 @@
 from selenium.webdriver.common.by import By
-from Helpers import helpers
-from TestData import test_data
-from Helpers.test_logger import logger
+from Helpers.helpers_lib import GeneralHelpers
+from TestData import testdata
 
-mail_fld = (By.ID, "dwfrm_login_username")
-password_fld = (By.ID, "dwfrm_login_password")
-login_btn = (By.ID, "login")
+email_field = (By.ID, "dwfrm_login_username")
+pass_field = (By.ID, "dwfrm_login_password")
+btn_sign_in = (By.XPATH, "//button[@id='login']")
 
 
-def login(driver):
-    try:
-        helpers.find_and_send_keys(driver, mail_fld, test_data.email)
-        helpers.find_and_send_keys(driver, password_fld, test_data.password)
-        helpers.find_and_click(driver, login_btn)
-        logger("User logged in", error=False)
-    except Exception as err:
-        logger(f"Login failed {err}", error=True)
+class LoginPage(GeneralHelpers):
+
+    def login(self):
+        self.find_and_send_keys(email_field, testdata.username)
+        self.find_and_send_keys(pass_field, testdata.password)
+        self.find_and_click(btn_sign_in)

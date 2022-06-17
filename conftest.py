@@ -1,19 +1,27 @@
 import pytest
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from Pages.login_page import LoginPage
+from Helpers.helpers_lib import GeneralHelpers
+from Pages.base_page import BasePage
+import logging
+from TestData import testdata
 
-from Helpers import helpers
-from TestData import test_data
-
-
-@pytest.fixture()
+@pytest.fixture
 def driver():
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome()
     yield driver
     driver.quit()
 
+@pytest.fixture
+def login(driver):
+    general = GeneralHelpers(driver)
+    base = BasePage(driver)
+    login = LoginPage(driver)
 
-@pytest.fixture()
-def open_url(driver):
-    helpers.go_to_page(driver, test_data.url)
+    general.go_to_page(testdata.home_url)
+    base.click_login()
+    login.login()
+
+
+
 
